@@ -20,6 +20,10 @@ inputs:
   pod_label:
     description: 'Pod label'
     required: true
+  path:
+    description: 'Path in repo where dag files live'
+    required: false
+    default: ''
 runs:
   using: 'docker'
   image: 'Dockerfile'
