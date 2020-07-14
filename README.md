@@ -1,16 +1,8 @@
-# Action Template
+# Populate Dagbag
 
-Action Description
+CI for populating an airflow dagbag
 
-## Inputs
-
-### `input_one`
-
-#### Input One Title
-
-Input one description
-
-## Example usage
+## Usage
 
 ```ylm
 uses: colpal/actions-name
