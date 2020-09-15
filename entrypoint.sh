@@ -18,8 +18,14 @@ pod_name=$(\
     -l "$INPUT_POD_LABEL" \
     -o jsonpath='{.items[0].metadata.name}'\
 )
-kubectl exec "$pod_name" -- sh -c "rm -rf $dag_directory/*"
-for dag_file in "$INPUT_PATH"*.py; do
+
+for file in $
+do
+  kubectl exec "$pod_name" -- sh -c "rm -rf $dag_directory/file"
+done
+
+for dag_file in "$INPUT_PATH"*.py
+do
   test ! -f "$dag_file" \
     || kubectl cp "$dag_file" "$pod_name:$dag_directory"
 done
