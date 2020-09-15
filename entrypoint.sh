@@ -24,8 +24,8 @@ for dag_file in $INPUT_DELTAS; do
     # remove files that have been changed
     kubectl exec "$pod_name" -- sh -c "rm -rf $dag_directory/$dag_file"
     # add changed file to dagbag
-    test ! -f "$INPUT_PATH$dag_file" \
-      || kubectl cp "$INPUT_PATH$dag_file" "$pod_name:$dag_directory"
+    test ! -f "$dag_file" \
+      || kubectl cp "$dag_file" "$pod_name:$dag_directory"
   fi
 done
 
