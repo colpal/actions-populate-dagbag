@@ -21,7 +21,7 @@ pod_name=$(\
 
 # remove files that have been changed
 for file in "$INPUT_DELTAS"; do
-  if [[ $file == *.py ]] ;
+  if [[ $file == "*.py" ]] ;
   then
     echo $file
     kubectl exec "$pod_name" -- sh -c "rm -rf $dag_directory/file"
