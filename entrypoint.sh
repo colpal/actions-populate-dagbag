@@ -19,11 +19,13 @@ pod_name=$(\
     -o jsonpath='{.items[0].metadata.name}'\
 )
 
+# remove files that have been changed
 for file in $
 do
   kubectl exec "$pod_name" -- sh -c "rm -rf $dag_directory/file"
 done
 
+# upload files that have been changed
 for dag_file in "$INPUT_PATH"*.py
 do
   test ! -f "$dag_file" \
