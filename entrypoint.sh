@@ -20,9 +20,12 @@ pod_name=$(\
 )
 
 # remove files that have been changed
-for file in "$INPUT_DELTAS"
-do
-  kubectl exec "$pod_name" -- sh -c "rm -rf $dag_directory/file"
+for file in "$INPUT_DELTAS"; do
+  if [[ $file == *.py ]] ;
+  then
+    echo $file
+    kubectl exec "$pod_name" -- sh -c "rm -rf $dag_directory/file"
+  fi
 done
 
 # upload files that have been changed
