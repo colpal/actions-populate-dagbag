@@ -20,7 +20,7 @@ pod_name=$(\
 )
 
 for dag_file in "$INPUT_PATH$INPUT_DELTAS"; do
-  if [[ $dag_file == *.py ]]; then
+  if [[ $dag_file == "*.py" ]]; then
     # remove files that have been changed
     kubectl exec "$pod_name" -- sh -c "rm -rf $dag_directory/dag_file"
     # add changed file to dagbag
