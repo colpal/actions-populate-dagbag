@@ -24,6 +24,9 @@ inputs:
     description: 'Path in repo where dag files live'
     required: false
     default: ''
+  deltas:
+    description: 'List of files that have been changed'
+    required: true
 runs:
   using: 'docker'
   image: 'Dockerfile'
