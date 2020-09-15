@@ -19,17 +19,13 @@ pod_name=$(\
     -o jsonpath='{.items[0].metadata.name}'\
 )
 
-# remove files that have been changed
-for file in "$INPUT_DELTAS"; do
-  if [[ $file == "*.py" ]]; then
-    echo $file
-    kubectl exec "$pod_name" -- sh -c "rm -rf $dag_directory/file"
+for dag_file in "$INPUT_PATH$INPUT_DELTAS"; do
+  if [[ $dag_file == "*.py" ]]; then
+    # remove files that have been changed
+    kubectl exec "$pod_name" -- sh -c "rm -rf $dag_directory/dag_file"
+    # add changed file to dagbag
+    test ! -f "$dag_file" \
+      || kubectl cp "$dag_file" "$pod_name:$dag_directory"
   fi
 done
 
-# upload files that have been changed
-for dag_file in "$INPUT_PATH$INPUT_DELTAS"
-do
-  test ! -f "$dag_file" \
-    || kubectl cp "$dag_file" "$pod_name:$dag_directory"
-done
