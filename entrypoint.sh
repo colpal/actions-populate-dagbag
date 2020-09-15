@@ -2,7 +2,7 @@
 
 set -eux
 
-"$INPUT_SERVICE_ACCOUNT_KEY" | base64 -d > /tmp/service_account.json
+echo "$INPUT_SERVICE_ACCOUNT_KEY" | base64 -d > /tmp/service_account.json
 gcloud auth activate-service-account --key-file=/tmp/service_account.json
 
 gcloud container clusters get-credentials "$INPUT_CLUSTER" \
