@@ -20,13 +20,13 @@ pod_name=$(\
 )
 
 # remove files that have been changed
-for file in $
+for file in "$INPUT_DELTAS"
 do
   kubectl exec "$pod_name" -- sh -c "rm -rf $dag_directory/file"
 done
 
 # upload files that have been changed
-for dag_file in "$INPUT_PATH"*.py
+for dag_file in "$INPUT_PATH$INPUT_DELTAS"
 do
   test ! -f "$dag_file" \
     || kubectl cp "$dag_file" "$pod_name:$dag_directory"
