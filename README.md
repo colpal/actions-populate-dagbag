@@ -6,7 +6,7 @@ CI for populating an airflow dagbag
 
 ## Usage
 
-```ylm
+```yaml
 uses: colpal/actions-populate-dagbag@master
     with:
         # SA Key stored as GitHub secret
