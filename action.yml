@@ -20,10 +20,6 @@ inputs:
   pod_label:
     description: 'Pod label'
     required: true
-  path:
-    description: 'Path in repo where dag files live'
-    required: false
-    default: ''
   deltas:
     description: 'List of files that have been changed'
     required: true
