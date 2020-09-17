@@ -20,7 +20,7 @@ pod_name=$(\
 )
 
 for dag_file_path in $INPUT_DELTAS; do
-  if [[ $dag_file_path == *.py ]]; then
+  if [[ $dag_file_path == *.py ]] && [[ $dag_file_path == $INPUT_PATH* ]]; then
     # split file + path into an array & fetch last element (file name)
     IFS='/' read -r -a path_array <<< "$dag_file_path"
     dag_file=${path_array[-1]}
