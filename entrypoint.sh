@@ -28,7 +28,8 @@ for dag_file_path in $INPUT_DELTAS; do
     kubectl exec "$pod_name" -- sh -c "rm -rf $dag_directory/$dag_file"
     # add changed file to dagbag
     test ! -f "$dag_file_path" \
-      || kubectl cp "$dag_file_path" "$pod_name:$dag_directory"
+      || kubectl cp "$dag_file_path" "$pod_name:$dag_directory" \
+      && kubectl exec "$pod_name" -- sh -c "chown 1000:1000 $dag_file"
   fi
 done
 
