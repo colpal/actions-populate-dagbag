@@ -29,8 +29,8 @@ for dag_file_path in $INPUT_DELTAS; do
     # add changed file to dagbag
     test ! -f "$dag_file_path" \
       || kubectl cp "$dag_file_path" "$pod_name:$dag_directory" \
-      # modify file owner
-      && kubectl exec "$pod_name" -- sh -c "chown 1000:1000 $dag_file"
   fi
 done
 
+# recursively change file owner of files in directory to airflow
+chown -R 1000:1000 $dag_directory
