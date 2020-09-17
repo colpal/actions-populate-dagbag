@@ -7,20 +7,21 @@ CI for populating an airflow dagbag
 ## Usage
 
 ```yaml
-uses: colpal/actions-populate-dagbag@master
+steps:
+  - uses: colpal/actions-populate-dagbag@master
     with:
-        # SA Key stored as GitHub secret
-        SERVICE_ACCOUNT_KEY: ${{ secrets.YOUR_SERVICE_ACCOUNT_KEY }}
-        # GCP project
-        PROJECT: YOUR_PROJECT
-        # GCP cluster
-        CLUSTER: YOUR_CLUSTER
-        # GCP project zone
-        ZONE: YOUR_ZONE
-        # reference the namespace enviornmanetal variable
-        NAMESPACE: ${{ env.NAMESPACE }}
-        # reference the pod label enviornmental variable
-        POD_LABEL: ${{ env.POD_LABEL }}
-        # optional arg for path to the folder that contains dag files (must end in /)
-        PATH: YOUR_DAG_PATH/
+      # SA Key stored as GitHub secret
+      SERVICE_ACCOUNT_KEY: ${{ secrets.YOUR_SERVICE_ACCOUNT_KEY }}
+      # GCP project
+      PROJECT: YOUR_PROJECT
+      # GCP cluster
+      CLUSTER: YOUR_CLUSTER
+      # GCP project zone
+      ZONE: YOUR_ZONE
+      # reference the namespace enviornmanetal variable
+      NAMESPACE: ${{ env.NAMESPACE }}
+      # reference the pod label enviornmental variable
+      POD_LABEL: ${{ env.POD_LABEL }}
+      # optional arg for path to the folder that contains dag files (must end in /)
+      PATH: YOUR_DAG_PATH/
 ```
